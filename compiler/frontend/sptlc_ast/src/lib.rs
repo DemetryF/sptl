@@ -19,6 +19,7 @@ pub struct Ident<'source> {
     pub pos: Pos,
 }
 
+#[derive(Debug, PartialEq)]
 pub enum Type {
     Bool,
 

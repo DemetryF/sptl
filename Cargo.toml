@@ -1,2 +1,2 @@
 [workspace]
-members = ["compiler/frontend/sptlc_ast"]
+members = ["compiler/frontend/sptlc_ast", "compiler/frontend/sptlc_lexer"]

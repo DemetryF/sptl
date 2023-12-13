@@ -25,4 +25,28 @@ pub enum Atom<'source> {
     Literal(Literal),
 }
 
-pub enum Literal {}
+#[derive(Debug, PartialEq)]
+pub enum Literal {
+    Number {
+        value: f64,
+        postfix: Option<NumberType>,
+    },
+    Bool(bool),
+}
+
+#[derive(Debug, PartialEq)]
+
+pub enum NumberType {
+    F64,
+    F32,
+
+    I64,
+    I32,
+    I16,
+    I8,
+
+    U64,
+    U32,
+    U16,
+    U8,
+}
