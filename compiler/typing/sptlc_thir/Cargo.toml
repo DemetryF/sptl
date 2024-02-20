@@ -1,0 +1,9 @@
+[package]
+name = "sptlc_thir"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sptlc_hir = { path = "../../semantic/sptlc_hir" }

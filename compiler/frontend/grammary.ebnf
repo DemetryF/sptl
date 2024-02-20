@@ -1,0 +1,126 @@
+code = declaration*
+
+# global statements
+
+declaration = 
+      function_declaration
+    | constant_declaration
+
+function_declaration =
+    'fn' ID '(' function_arguments ')' 
+	('->' type)? 
+	block
+
+constant_declaration =
+    'const' ID ':' type '=' expression ';'
+
+# block
+
+block = '{' statement* '}'
+
+# statements
+
+statement =
+      if_statement
+    | while_statement
+    | let_statement
+    | constant_declaration
+    | expr_statement
+    | return_statement
+    | break_statement
+    | continue_statement
+
+if_statement =
+    'if' expr body
+    ('else' 'if' expr body)*
+    ('else' body)?
+
+while_statement =
+    'while' expr body
+
+let_statement = 
+    'let' ID ':' type ('=' expr)? ';'
+
+expr_statement =
+      expr ';'
+    | assign_expr ';'
+
+return_statement =
+    'return' expr? ';'
+
+break_statement = 'break' ';'
+
+continue_statement = 'continue' ';'
+
+# expressions
+
+expr = or
+
+## operators
+
+assign_expr =
+      ID '='  expr
+    | ID '+=' expr
+    | ID '-=' expr
+    | ID '*=' expr
+    | ID '/=' expr
+    | expr
+
+or_expr =
+      or_expr '||' and_expr
+    | and_expr
+
+and_expr =
+      and_expr '&&' equal_expr
+    | equal_expr
+
+equal_expr =
+      equal_expr '==' cmp_expr
+    | equal_expr '!=' cmp_expr
+    | cmp_expr
+
+cmp_expr =
+      cmp_expr '>=' add_expr
+    | cmp_expr '<=' add_expr
+    | cmp_expr '>' add_expr
+    | cmp_expr '<' add_expr
+    | add_expr
+
+add_expr =
+      add_expr '+' mul_expr
+    | add_expr '-' mul_expr
+    | mul_expr
+
+mul_expr =
+      mul_expr '*' as_expr
+    | mul_expr '/' as_expr
+    | as_expr
+
+as_expr =
+      unary_expr 'as' type
+    | unary_expr
+
+unary_expr = 
+      '!' fact
+    | '-' fact
+    | fact
+
+## fact
+
+fact ::= call | parenthesis | atom
+
+call ::= ID '(' call_arguments ')'
+parenthesis ::= '(' expr ')'
+atom ::= ID | NUM | BOOL
+
+# other
+
+type ::= 'u64' | 'u32' | 'u16' | 'u8'
+       | 'i64' | 'i32' | 'i16' | 'i8'
+       | 'f64' | 'f32'
+       | 'bool'
+
+function_arguments = ( function_argument ( ',' function_argument )* )?
+function_argument = ID ':' type
+
+call_arguments = ( expr ( ',' expr )* )?
