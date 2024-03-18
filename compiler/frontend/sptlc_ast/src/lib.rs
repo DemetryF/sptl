@@ -1,4 +1,5 @@
 mod declarations;
+mod display;
 mod expr;
 mod operators;
 mod pos;
@@ -19,7 +20,7 @@ pub struct Ident<'source> {
     pub pos: Pos,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Copy)]
 pub enum Type {
     Bool,
 

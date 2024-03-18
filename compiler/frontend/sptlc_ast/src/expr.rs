@@ -27,7 +27,7 @@ pub enum Atom<'source> {
     Literal(Literal<'source>),
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Copy)]
 pub enum Literal<'source> {
     Number {
         value: &'source str,
@@ -36,7 +36,7 @@ pub enum Literal<'source> {
     Bool(bool),
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Copy)]
 pub enum NumberPostfix {
     F64,
     F32,

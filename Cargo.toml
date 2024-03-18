@@ -1,8 +1,12 @@
 [workspace]
 members = [
+    "compiler/frontend/sptlc_lexer",
     "compiler/frontend/sptlc_ast",
+
     "compiler/semantic/sptlc_hir",
+
     "compiler/typing/sptlc_thir",
+
     "compiler/linear/sptlc_ir",
 ]
 

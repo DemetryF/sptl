@@ -18,6 +18,13 @@ name = "sptlc_ir"
 version = "0.1.0"
 
 [[package]]
+name = "sptlc_lexer"
+version = "0.1.0"
+dependencies = [
+ "sptlc_ast",
+]
+
+[[package]]
 name = "sptlc_thir"
 version = "0.1.0"
 dependencies = [
